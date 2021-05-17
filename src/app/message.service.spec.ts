@@ -5,15 +5,23 @@ describe('MessageService', () => {
 
   beforeEach(() => {
     service = new MessageService();
-  })
+  });
 
   it('should have no messages to start', () => {
     expect(service.messages.length).toBe(0);
   });
 
   it('should add a message when add is called', () => {
-    service.add('Some message');
+    service.add('message 1');
 
-    expect(service.messages[0]).toEqual('Some message');
-  })
-})
+    expect(service.messages.length).toBe(1);
+  });
+
+  it('should remove all messages when clear is called', () => {
+    service.add('message 1');
+
+    service.clear();
+
+    expect(service.messages.length).toBe(0);
+  });
+});
